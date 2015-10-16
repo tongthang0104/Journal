@@ -10,10 +10,10 @@ import Foundation
 
 class EntryController {
     static let shareInstantEntry: EntryController = EntryController()
-    var entry = [Entry]()
+    var entryArray = [Entry]()
     
     init () {
-        self.entry = [Entry] ()
+        self.entryArray = [Entry] ()
     }
  
 }
