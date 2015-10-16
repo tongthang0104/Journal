@@ -71,16 +71,17 @@ class JournalTests: XCTestCase {
     
     // MARK: Part 3
     
-//    func testEntryPersistence() {
-//        let controller = EntryController.sharedController
+        func testEntryPersistence() {
+            let controller = EntryController.sharedController
 //        
-//        let testEntry = Entry(title: "Test Title", text: "Lorem ipsum doler init")
+            let testEntry = Entry(title: "Test Title", bodyText: "Lorem ipsum doler init")
 //        
-//        controller.addEntry(testEntry)
+            controller.addEntry(testEntry)
+       
+            XCTAssert(controller.entryArray.contains(testEntry), "Entry object not added to EntryController's entries array.")
 //        
-//        XCTAssert(controller.entries.contains(testEntry), "Entry object not added to EntryController's entries array.")
-//        
-//        controller.entries = []
+            controller.entryArray = []
+    }
 //        
 //        controller.loadFromPersistentStorage()
 //        
