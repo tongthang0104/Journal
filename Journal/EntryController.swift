@@ -10,8 +10,8 @@ import Foundation
 
 // Define class EntryCotroller
 class EntryController {
-    static let shareInstantEntry: EntryController = EntryController()
-   
+    static let sharedController: EntryController = EntryController()
+  
 // Create Entry Array
     var entryArray = [Entry]()
     
@@ -28,6 +28,9 @@ class EntryController {
 }
 
 // func let you remove things from your array
+// This function require the equatable function from the Entry.swift in order to find the exact item on specific row
+    
+// TODO: Ask mentor why is that?
 
     func removeEntry (entryParameter2: Entry) -> () {
     
@@ -39,5 +42,8 @@ class EntryController {
         }
     }
 }
+
+
+
 
 

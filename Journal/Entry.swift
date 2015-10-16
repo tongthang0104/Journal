@@ -14,11 +14,19 @@ struct Entry: Equatable {
     let title: String
     let bodyText: String
     
-    init (timeStamps: String, title: String, bodyText: String) {
+    init(timeStamps: String, title: String, bodyText: String) {
+        self.timeStamps = timeStamps
+        self.title = title
+        self.bodyText = bodyText
+    }
+    
+    init (title: String, bodyText: String) {
         self.timeStamps = "January 1st , 2016"
         self.title = title
         self.bodyText = bodyText
     }
+    
+    
 }
 
 func ==(lhs: Entry, rhs: Entry) -> Bool {
