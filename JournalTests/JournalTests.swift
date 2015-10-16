@@ -26,7 +26,7 @@ class JournalTests: XCTestCase {
         super.tearDown()
         
         // Resets persisted entries
-        controller.entries = []
+        controller.entryArray = []
         
         // MARK: Part 3
 //        controller.saveToPersistentStorage()
@@ -36,9 +36,9 @@ class JournalTests: XCTestCase {
     
     func testEntryMemberwiseInitializer() {
         
-        let testEntry = Entry(title: testTitle, text: testBodyText)
+        let testEntry = Entry(title: testTitle, bodyText: testBodyText)
 
-        XCTAssert(testEntry.title == testTitle && testEntry.text == testBodyText, "Entry title or text do not match values passed at initialization.")
+        XCTAssert(testEntry.title == testTitle && testEntry.bodyText == testBodyText, "Entry title or text do not match values passed at initialization.")
     }
     
     func testSharedInstance() {
@@ -47,26 +47,26 @@ class JournalTests: XCTestCase {
     
     func testEntryControllerAddEntry() {
         
-        let testEntry = Entry(title: testTitle, text: testBodyText)
+        let testEntry = Entry(title: testTitle, bodyText: testBodyText)
         
         controller.addEntry(testEntry)
         
-        XCTAssert(controller.entries.contains(testEntry), "Entry object not added to EntryController's entries array.")
+        XCTAssert(controller.entryArray.contains(testEntry), "Entry object not added to EntryController's entries array.")
     }
     
     func testEntryControllerRemoveEntry() {
         
         let controller = EntryController.sharedController
         
-        let testEntry = Entry(title: testTitle, text: testBodyText)
+        let testEntry = Entry(title: testTitle, bodyText: testBodyText)
         
         controller.addEntry(testEntry)
         
-        XCTAssert(controller.entries.contains(testEntry), "Entry object not added to EntryController's entries array.")
+        XCTAssert(controller.entryArray.contains(testEntry), "Entry object not added to EntryController's entries array.")
         
         controller.removeEntry(testEntry)
         
-        XCTAssertFalse(controller.entries.contains(testEntry), "Entry object still contained in EntryController's entries array.")
+        XCTAssertFalse(controller.entryArray.contains(testEntry), "Entry object still contained in EntryController's entries array.")
     }
     
     // MARK: Part 3
