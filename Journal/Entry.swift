@@ -10,12 +10,12 @@ import Foundation
 
 struct Entry: Equatable {
     // Create the properties
-    let timeStamps: NSDate
+    let timeStamps: String
     let title: String
     let bodyText: String
     
-    init (timeStamps: NSDate, title: String, bodyText: String) {
-        self.timeStamps = timeStamps
+    init (timeStamps: String, title: String, bodyText: String) {
+        self.timeStamps = "January 1st , 2016"
         self.title = title
         self.bodyText = bodyText
     }
