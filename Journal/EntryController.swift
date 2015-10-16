@@ -9,5 +9,13 @@
 import Foundation
 
 class EntryController {
-    static let singleton = [Entry]()
+    static let shareInstantEntry: EntryController = EntryController()
+    var entry = [Entry]()
+    
+    init () {
+        self.entry = [Entry] ()
+    }
+ 
 }
+
+
