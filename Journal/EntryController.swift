@@ -36,7 +36,7 @@ class EntryController {
 // TODO: Ask mentor why is that?
 
     func removeEntry (entryParameter2: Entry) -> () {
-    
+        
         let index = self.entryArray.indexOf(entryParameter2)
         
         if let entryIndex = index
