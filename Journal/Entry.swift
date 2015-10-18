@@ -8,20 +8,21 @@
 
 import Foundation
 
-struct Entry: Equatable {
+class Entry: Equatable {
     // Create the properties
-    let timeStamps: String
-    let title: String
-    let bodyText: String
+    var timeStamps: NSDate
+    var title: String
+    var bodyText: String
+   
     
-    init(timeStamps: String, title: String, bodyText: String) {
-        self.timeStamps = timeStamps
-        self.title = title
-        self.bodyText = bodyText
-    }
-    
+//    init(timeStamps: NSDate , title: String, bodyText: String) {
+//        self.timeStamps = timeStamps
+//        self.title = title
+//        self.bodyText = bodyText
+//    }
+//    
     init (title: String, bodyText: String) {
-        self.timeStamps = "January 1st , 2016"
+        self.timeStamps = NSDate ()
         self.title = title
         self.bodyText = bodyText
     }

@@ -16,7 +16,10 @@ class EntryController {
     var entryArray = [Entry]()
     
     init () {
-        self.entryArray = [Entry] ()
+        self.entryArray = [
+            Entry (title: "Today", bodyText: "Happy New Year"),
+            Entry (title: "Celebrate", bodyText: "Drinking, Gambling")
+        ]
     }
  
 
