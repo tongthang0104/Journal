@@ -18,7 +18,7 @@ class Entry: Equatable {
     var timeStamps: NSDate
     var title: String
     var bodyText: String
-    
+
     init (title: String, bodyText: String) {
         self.timeStamps = NSDate ()
         self.title = title
