@@ -23,7 +23,6 @@ class EntryDetailViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
       
     }
-    
 
     //MARK: Update new Entry
     
@@ -40,6 +39,7 @@ class EntryDetailViewController: UIViewController {
         
         entryTitle.text? = ""
         entryBodyText.text? = ""
+        
     }
     
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
@@ -61,6 +61,7 @@ class EntryDetailViewController: UIViewController {
                 print("Add entry")
                
         }
+        
         navigationController?.popViewControllerAnimated(true)
     }
     
