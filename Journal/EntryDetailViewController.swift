@@ -53,12 +53,10 @@ class EntryDetailViewController: UIViewController {
             }
             
         // if create new entry, add it to a new rows. Call function addEntry
-            
         } else {
-        
             let newEntry = Entry (title: entryTitle.text!, bodyText: entryBodyText.text)
-    
             entries.addEntry(newEntry)
+            entry = newEntry
         }
     }
     
