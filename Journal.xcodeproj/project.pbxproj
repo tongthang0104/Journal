@@ -105,6 +105,7 @@
 			children = (
 				68816AC71BBB5405000569CE /* AppDelegate.swift */,
 				68816ACB1BBB5405000569CE /* Main.storyboard */,
+				68816AD01BBB5405000569CE /* LaunchScreen.storyboard */,
 				68816ACE1BBB5405000569CE /* Assets.xcassets */,
 				68816AD31BBB5405000569CE /* Info.plist */,
 				DE0BADE01BD33AD70038AD32 /* Controller */,
@@ -136,7 +137,6 @@
 			children = (
 				68816AC91BBB5405000569CE /* EntryDetailViewController.swift */,
 				DE0BADDE1BD33AC50038AD32 /* EntryListTableViewController.swift */,
-				68816AD01BBB5405000569CE /* LaunchScreen.storyboard */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

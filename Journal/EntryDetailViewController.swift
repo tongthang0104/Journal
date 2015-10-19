@@ -13,25 +13,25 @@ class EntryDetailViewController: UIViewController {
     // MARK: Properties
    
     var entry = Entry?()
-    var entries = EntryController.sharedController
-  
+
     @IBOutlet weak var entryTitle: UITextField!
     
     @IBOutlet weak var entryBodyText: UITextView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+      
     }
     
+
     //MARK: Update new Entry
     
     func updateWithEntry (entry: Entry) {
         
         self.entry = entry
-        self.entryTitle.text = entry.title
-        self.entryBodyText.text = entry.bodyText
+        self.entryTitle?.text = entry.title
+        self.entryBodyText?.text = entry.bodyText
     }
 
     //MARK: Action
@@ -44,20 +44,24 @@ class EntryDetailViewController: UIViewController {
     
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
         
-        // if select the existing Entry to edit, replace that with new information
-        if let existingEntry = entry {
+        // if select the existing Entry to edit, replace that with new informati
             
-            if let entry = entryTitle.text, entryBodyText = entryBodyText.text {
-                existingEntry.title = entry
-                existingEntry.bodyText = entryBodyText
-            }
-            
-        // if create new entry, add it to a new rows. Call function addEntry
-        } else {
-            let newEntry = Entry (title: entryTitle.text!, bodyText: entryBodyText.text)
-            entries.addEntry(newEntry)
-            entry = newEntry
+            if let entry = self.entry {
+                entry.title = self.entryTitle.text!
+                entry.bodyText = self.entryBodyText.text
+                entry.timeStamps = NSDate()
+        
+                updateWithEntry(entry)
+    
+            }else {
+                // if create new entry, add it to a new rows. Call function addEntry
+                let newEntry = Entry (title: self.entryTitle.text!, bodyText: self.entryBodyText.text)
+                EntryController.sharedController.addEntry(newEntry)
+                self.entry = newEntry
+                print("Add entry")
+               
         }
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
@@ -70,7 +74,7 @@ class EntryDetailViewController: UIViewController {
             navigationController!.popViewControllerAnimated(true)
         }
     }
-  
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -96,4 +100,3 @@ extension EntryDetailViewController: UITextViewDelegate {
         return true
     }
 }
-

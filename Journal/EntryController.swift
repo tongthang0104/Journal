@@ -13,7 +13,7 @@ class EntryController {
     static let sharedController: EntryController = EntryController()
   
 // Create Entry Array
-    var entryArray = [Entry]()
+    var entryArray: [Entry] = []
     
     init () {
         self.entryArray = [
@@ -25,8 +25,8 @@ class EntryController {
 
 // Function let you add thing to your array
 
-    func addEntry (entryParameter: Entry) -> () {
-       self.entryArray.append(entryParameter)
+    func addEntry (entry: Entry) -> () {
+       self.entryArray.append(entry)
     
 }
 

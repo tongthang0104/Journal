@@ -41,7 +41,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="0.97947600180000005" blue="0.76223359030000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="xH5-wi-bv1"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="editEntry" id="xH5-wi-bv1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -54,7 +54,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vfH-xa-GSG">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="Jsl-Zm-6md"/>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="" id="Jsl-Zm-6md"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -179,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="114" y="266"/>
+            <point key="canvasLocation" x="271" y="291"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

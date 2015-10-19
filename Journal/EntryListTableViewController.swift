@@ -11,17 +11,21 @@ import UIKit
 class EntryListTableViewController: UITableViewController {
     
     var entries = EntryController.sharedController.entryArray
+    var entry: Entry?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-       view.reloadInputViews()
+       
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+ 
 
     // MARK: - Table view data source
     
@@ -50,17 +54,38 @@ class EntryListTableViewController: UITableViewController {
             entries.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
+            
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
     
     // MARK: - Navigation
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let segueIdentifier
         
+        if segue.identifier == "editEntry" {
+            
+            if let displayEntry = segue.destinationViewController as? EntryDetailViewController {
+            
+                _ = displayEntry.view
+                
+                let indexPath = tableView.indexPathForSelectedRow
+                
+                if let selectedRows = indexPath?.row {
+                
+                let entry = entries[selectedRows]
+                
+                displayEntry.updateWithEntry(entry)
+                }
+              
+            }
+       
+        }
     }
    
 }
+
+
 
 
 

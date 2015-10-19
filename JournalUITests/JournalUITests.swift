@@ -57,11 +57,11 @@ class JournalUITests: XCTestCase {
         
         app.tables.staticTexts[testTitle]
         
-        let testEntry = EntryController.sharedController.entries.first
-        
-        if let entry = testEntry {
-            XCTAssert(entry.title == testTitle && entry.text == testBodyText, "Added entry does not match what was entered.")
-        }
+//        let testEntry = EntryController.sharedController.entries.first
+//        
+//        if let entry = testEntry {
+//            XCTAssert(entry.title == testTitle && entry.text == testBodyText, "Added entry does not match what was entered.")
+//        }
         
     }
     
