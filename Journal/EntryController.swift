@@ -8,43 +8,69 @@
 
 import Foundation
 
-// Define class EntryCotroller
 class EntryController {
     static let sharedController: EntryController = EntryController()
   
-// Create Entry Array
+//MARK: Entry Array
+    
     var entryArray: [Entry] = []
     
     init () {
-        self.entryArray = [
-            Entry (title: "Today", bodyText: "Happy New Year"),
-            Entry (title: "Celebrate", bodyText: "Drinking, Gambling")
-        ]
+        self.entryArray = []
+        loadFromPersistentStore ()
     }
- 
-
-// Function let you add thing to your array
+    
+//MARK: ADD
 
     func addEntry (entry: Entry) -> () {
        self.entryArray.append(entry)
-    
-}
+        saveToPersistentStore ()
+    }
 
-// func let you remove things from your array
-// This function require the equatable function from the Entry.swift in order to find the exact item on specific row
+//MARK: REMOVE
     
-// TODO: Ask mentor why is that?
-
     func removeEntry (entryParameter2: Entry) -> () {
         
         let index = self.entryArray.indexOf(entryParameter2)
         
-        if let entryIndex = index
-        {
+        if let entryIndex = index{
             self.entryArray.removeAtIndex(entryIndex)
         }
+        saveToPersistentStore ()
     }
+
+
+    //MARK: Save to Persistent Store
+
+    func saveToPersistentStore () {
+        
+        let entryDictionary = self.entryArray.map({$0.dictionaryCopy()})
+        NSUserDefaults.standardUserDefaults().setValue(entryDictionary, forKey: "Entry")
+    
+    }
+
+    //MARK: Load from Persistent Store
+
+    func loadFromPersistentStore () {
+    
+        //grab entry item in default
+        let entryFromArray = NSUserDefaults.standardUserDefaults().objectForKey("Entry") as? [Dictionary<String, AnyObject>]
+        
+        if let entryDictionary = entryFromArray {
+            self.entryArray = entryDictionary.map({Entry(dictionary: $0)!})
+        }
+    
+    }
+
 }
+
+
+
+
+
+
+
+
 
 
 
