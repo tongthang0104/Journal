@@ -32,10 +32,7 @@ class EntryDetailViewController: UIViewController {
         self.entry = entry
         self.entryTitle.text = entry.title
         self.entryBodyText.text = entry.bodyText
-        
     }
-    
-    
 
     //MARK: Action
 
@@ -43,7 +40,6 @@ class EntryDetailViewController: UIViewController {
         
         entryTitle.text? = ""
         entryBodyText.text? = ""
-  
     }
     
     @IBAction func saveButtonTapped(sender: UIBarButtonItem) {
@@ -63,9 +59,7 @@ class EntryDetailViewController: UIViewController {
             let newEntry = Entry (title: entryTitle.text!, bodyText: entryBodyText.text)
     
             entries.addEntry(newEntry)
-            
         }
-        
     }
     
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
@@ -78,14 +72,11 @@ class EntryDetailViewController: UIViewController {
             navigationController!.popViewControllerAnimated(true)
         }
     }
-    
-   
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
 extension EntryDetailViewController: UITextFieldDelegate {
@@ -96,4 +87,15 @@ extension EntryDetailViewController: UITextFieldDelegate {
     }
 }
 
+extension EntryDetailViewController: UITextViewDelegate {
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"
+        {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+}
 
