@@ -7,52 +7,48 @@
 //
 
 import Foundation
+import CoreData
 
 class EntryController {
     
-    private let entriesKey = "entries"
-    
     static let sharedController = EntryController()
     
-    var entries: [Entry]
-    
-    init() {
+    var entries: [Entry] {
         
-        self.entries = []
+        //TODO: Computed Properties ???
         
-        self.loadFromPersistentStorage()
+        let request = NSFetchRequest(entityName: Entry.entityName)
+        let moc = Stack.sharedStack.managedObjectContext
+        
+        do {
+            return try moc.executeFetchRequest(request) as! [Entry]
+        } catch {
+            return []
+        }
     }
     
     func addEntry(entry: Entry) {
-        
-        entries.append(entry)
         
         self.saveToPersistentStorage()
     }
     
     func removeEntry(entry: Entry) {
         
-        if let entryIndex = entries.indexOf(entry) {
-            entries.removeAtIndex(entryIndex)
-            
-        }
-    }
-    
-    func loadFromPersistentStorage() {
-        
-        let entryDictionariesFromDefaults = NSUserDefaults.standardUserDefaults().objectForKey(entriesKey) as? [Dictionary<String, AnyObject>]
-
-        if let entryDictionaries = entryDictionariesFromDefaults {
-        
-            self.entries = entryDictionaries.map({Entry(dictionary: $0)!})
+        if let moc = entry.managedObjectContext {
+            moc.deleteObject(entry)
+            self.saveToPersistentStorage()
         }
     }
     
     func saveToPersistentStorage() {
         
-        let entryDictionaries = self.entries.map({$0.dictionaryCopy()})
+        let moc = Stack.sharedStack.managedObjectContext
+        do {
+            try moc.save()
+        } catch {
+            print("Error saving managed object context. Items not saved. \(error)")
+        }
         
-        NSUserDefaults.standardUserDefaults().setObject(entryDictionaries, forKey: entriesKey)
     }
     
 }
